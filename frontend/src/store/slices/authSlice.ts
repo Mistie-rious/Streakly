@@ -16,7 +16,7 @@ if (storedUser) {
     savedUser = JSON.parse(storedUser);
   } catch {
     savedUser = null;
-    sessionStorage.removeItem("user"); // remove bad data
+    sessionStorage.removeItem("user"); 
   }
 }
 

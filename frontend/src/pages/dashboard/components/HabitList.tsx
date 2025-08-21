@@ -1,4 +1,4 @@
-import { HabitUI } from "@/store/slices/habitsSlice";
+import type { HabitUI } from "@/store/slices/habitsSlice";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";

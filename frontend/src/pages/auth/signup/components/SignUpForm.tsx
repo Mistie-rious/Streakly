@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signupUser, loginUser } from "@/store/slices/authSlice";
+import { signupUser } from "@/store/slices/authSlice";
 import type { RootState, AppDispatch } from "@/store";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";

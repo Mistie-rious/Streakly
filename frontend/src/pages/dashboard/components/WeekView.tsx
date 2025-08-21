@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { HabitUI } from "@/store/slices/habitsSlice";
 
-export const WeekView: React.FC<{ habits: HabitUI[] }> = ({ habits }) => {
+export const WeekView: React.FC<{ habits: HabitUI[] }> = ({  }) => {
   const today = new Date();
   const year = today.getFullYear();
   const month = today.getMonth();

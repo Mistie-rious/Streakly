@@ -8,7 +8,7 @@ import HabitNotFound from "@/pages/habitdetails/components/HabitNotFound";
 import HabitHeader from "@/pages/habitdetails/components/HabitHeader";
 import HabitStats from "@/pages/habitdetails/components/HabitStats";
 import HabitHistory from "@/pages/habitdetails/components/HabitHistory";
-import { calculateCurrentStreak } from "@/lib/numbers/CalculateCurrentStreak";
+import { calculateCurrentStreak } from "@/lib/streak/CalculateCurrentStreak";
 import HabitDetailSkeleton from "./components/HabitDetailSkeleton";
 
 export default function HabitDetail() {

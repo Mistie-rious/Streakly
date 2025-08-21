@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import AuthLayout from "@/components/shared/AuthLayout"
+import AuthLayout from "../components/AuthLayout"
 import LoginForm from "../login/components/LoginForm";
 
 export default function LoginPage() {

@@ -12,7 +12,7 @@ interface HabitListProps {
   onAdd: () => void;
 }
 
-const HabitList: React.FC<HabitListProps> = ({ habits, loading, error, onDelete, onView, onAdd }) => {
+const HabitList: React.FC<HabitListProps> = ({ habits,  onDelete, onView }) => {
  
   if (habits.length === 0) {
     return (

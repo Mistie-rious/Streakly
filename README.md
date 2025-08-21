@@ -99,9 +99,13 @@ Create a `.env` file in the backend root with:
 ```
 DATABASE_URL=postgresql://user:password@localhost:5432/dbname
 JWT_SECRET=your_jwt_secret
-PORT=port_number
+PORT=you_port_number
 ```
 
+Create a `.env` file in the frontend root with:
+```
+VITE_API_BASE_URL=your_api_url
+```
 ---
 
 ## Notes

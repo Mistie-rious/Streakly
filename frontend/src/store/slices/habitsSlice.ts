@@ -179,7 +179,7 @@ export const habitsSlice = createSlice({
       })
 
       //TOGGLE 
-      .addCase(toggleToday.rejected, (state, action) => {
+      .addCase(toggleToday.rejected, (_state, action) => {
         console.error('Backend update failed:', action.error.message);
       })
 

@@ -1,4 +1,4 @@
-import { HabitUI } from "@/store/slices/habitsSlice";
+import type { HabitUI } from "@/store/slices/habitsSlice";
 import { Button } from "@/components/ui/button";
 
 export function HabitCard({ habit, onToggle }: { habit: HabitUI; onToggle: () => void }) {
