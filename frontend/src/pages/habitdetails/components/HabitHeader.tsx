@@ -4,7 +4,7 @@ export default function HabitHeader({ name }: { name: string }) {
   return (
     <div className="mb-8">
       <Link
-        to="/dashboard"
+        to="/manage"
         className="inline-flex items-center text-foreground hover:text-primary transition-colors mb-4"
       >
         <svg

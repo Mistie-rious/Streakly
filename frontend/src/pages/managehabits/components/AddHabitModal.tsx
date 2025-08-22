@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner"; // import Sonner toast
+import { toast } from "sonner"; 
 
 interface AddHabitModalProps {
   isOpen: boolean;
@@ -21,9 +21,13 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({ isOpen, onClose, o
   const [name, setName] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [frequency, setFrequency] = useState<Habit["frequency"]>("DAILY");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
 
   const handleSubmit = async () => {
-    if (!name.trim()) return;
+    if (!name.trim() || isSubmitting) return;
+  
+    setIsSubmitting(true);
   
     try {
       const success = await onAdd({
@@ -35,20 +39,20 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({ isOpen, onClose, o
   
       if (success) {
         toast.success(`${name.trim()} was added successfully!`);
-
         setName("");
         setDescription("");
         setFrequency("DAILY");
         onClose();
       } else {
         toast.error(`Failed to add ${name.trim()}.`);
-       
       }
     } catch (error) {
       toast.error("An unexpected error occurred.");
-   
+    } finally {
+      setIsSubmitting(false);
     }
   };
+  
   
 
   return (
@@ -88,9 +92,10 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({ isOpen, onClose, o
     </select>
 
     <DialogFooter className="mt-4 flex gap-2">
-      <Button variant="outline" type="button" onClick={onClose}>
-        Cancel
-      </Button>
+    <Button type="submit" disabled={!name.trim() || isSubmitting}>
+  {isSubmitting ? "Adding..." : "Add Habit"}
+</Button>
+
       <Button type="submit" disabled={!name.trim()}>
         Add Habit
       </Button>

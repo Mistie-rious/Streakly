@@ -144,6 +144,7 @@ export const habitsSlice = createSlice({
       .addCase(fetchHabitById.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.currentHabit = null;
       })
       .addCase(fetchHabitById.fulfilled, (state, action) => {
         state.loading = false;

@@ -7,6 +7,7 @@ import type { Habit, HabitHistory, HabitUI } from "../../store/slices/habitsSlic
 import { Button } from "@/components/ui/button";
 import { AddHabitModal } from "./components/AddHabitModal";
 import HabitList from "@/pages/managehabits/components/HabitList";
+import ManageHabitsSkeleton from "./components/ManageHabitsSkeleton";
 
 const ManageHabits: React.FC = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -39,6 +40,8 @@ const ManageHabits: React.FC = () => {
       dispatch(deleteHabit(habit.id));
     }
   };
+
+  if (loading) return <ManageHabitsSkeleton/>
 
   return (
     <div className="min-h-screen bg-background p-4 sm:p-6">
