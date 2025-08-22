@@ -27,7 +27,7 @@ export default function HabitNotFound() {
         </p>
         <Link to="/dashboard">
           <button className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors">
-            Back to Dashboard
+            Back to Habits
           </button>
         </Link>
       </div>
