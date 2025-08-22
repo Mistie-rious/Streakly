@@ -5,7 +5,7 @@ import { GetUser } from '../common/decorators/get-user.decorator';
 import { CreateTrackDto } from './dto/create-track.dto';
 import { QueryTracksDto } from './dto/query-tracks.dto';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-
+import { AddTrack, ListTracks, RemoveTrack, ToggleToday } from '../lib/docs/track-decorator';
 
 @ApiTags('tracks')
 @ApiBearerAuth('access-token') 
@@ -15,17 +15,20 @@ export class TracksController {
     constructor(private service: TracksService) {}
 
     @Post()
+    @AddTrack()
     add(@GetUser() user:any, @Param('habitId') habitId: string, @Body() dto: CreateTrackDto){
         return this.service.add(user.sub, habitId, dto.date);
     }
 
 
   @Post('toggle-today')
+  @ToggleToday()
   toggleToday(@GetUser() user: any, @Param('habitId') habitId: string) {
     return this.service.toggleToday(user.sub, habitId);
   }
 
     @Get(':habitId/tracks')
+    @ListTracks()
     list(
       @GetUser() user: any,
       @Param('habitId') habitId: string,
@@ -43,6 +46,7 @@ export class TracksController {
 
 
     @Delete(':trackId')
+    @RemoveTrack()
     remove(@GetUser() user:any, @Param('habitId') habitId:string, @Param('trackId') trackId: string){
         return this.service.remove(user.sub, habitId, trackId)
     }

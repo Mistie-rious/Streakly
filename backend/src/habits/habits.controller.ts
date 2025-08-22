@@ -7,16 +7,21 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
 import { ApiBody } from '@nestjs/swagger';
 import { PaginationDto } from './dto/get-habit.dto';
+import { CreateHabit, GetHabit, DeleteHabit, ListHabits, UpdateHabit } from '../lib/docs/habit-decorator';
+
 @ApiTags('habits')
 @ApiBearerAuth('access-token') 
 @UseGuards(JwtAuthGuard)
 @Controller('habits')
+
+
 export class HabitsController {
     constructor(private service: HabitsService) {}
 
 
     @Get()
-list(@GetUser('sub') userId: string, @Query() query: PaginationDto  = {} ) {
+    @ListHabits()
+    list(@GetUser('sub') userId: string, @Query() query: PaginationDto  = {} ) {
   return this.service.list(
     userId,                 
     query.limit ?? 10,
@@ -31,11 +36,13 @@ list(@GetUser('sub') userId: string, @Query() query: PaginationDto  = {} ) {
 
     @ApiBody({ type: CreateHabitDto })
     @Post()
+    @CreateHabit()
     create(@GetUser() user:any, @Body() dto:CreateHabitDto){
         return this.service.create(user.sub, dto);
     }
 
     @Get(':id')
+    @GetHabit()
     get(
       @GetUser() user: any, 
       @Param('id') id: string, 
@@ -51,11 +58,13 @@ list(@GetUser('sub') userId: string, @Query() query: PaginationDto  = {} ) {
     
     
     @Patch(':id')
+    @UpdateHabit()
     update(@GetUser() user: any, @Param('id') id:string, @Body() dto:UpdateHabitDto) {
         return this.service.update(user.sub, id, dto);
     }
 
     @Delete(':id')
+    @DeleteHabit()
     remove(@GetUser() user: any, @Param('id') id:string){
         return this.service.remove(user.sub, id)
     }

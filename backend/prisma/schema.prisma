@@ -15,12 +15,6 @@ datasource db {
 }
 
 
-enum Frequency {
-  DAILY
-  WEEKLY
-  MONTHLY
-  YEARLY
-}
 
 
 model User {
@@ -37,7 +31,7 @@ model Habit {
   id          String       @id @default(uuid())
   name        String
   description String?
-  frequency   Frequency       // e.g. daily, weekly
+  frequency   Frequency      
   user        User         @relation(fields: [userId], references: [id])
   userId      String
   tracks      HabitTrack[]
@@ -52,6 +46,14 @@ model HabitTrack {
   habitId   String
   createdAt DateTime @default(now())
 
-  @@unique([habitId, date]) // one track per day per habit
+  @@unique([habitId, date]) 
 }
 
+
+
+enum Frequency {
+  DAILY
+  WEEKLY
+  MONTHLY
+  YEARLY
+}

@@ -13,7 +13,7 @@ export class ResponseInterceptor<T> implements NestInterceptor<T, any> {
           statusCode: context.switchToHttp().getResponse().statusCode,
           data, 
           timestamp: new Date().toISOString(),
-          path: context.switchToHttp().getRequest().url,
+     
         };
       }),
     );

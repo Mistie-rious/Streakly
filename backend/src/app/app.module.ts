@@ -12,7 +12,5 @@ import { TracksModule } from '../tracks/tracks.module';
 
 @Module({
   imports: [UserModule, PrismaModule, AuthModule, HabitsModule, TracksModule],
-  controllers: [AppController, HabitsController],
-  providers: [AppService, HabitsService],
 })
 export class AppModule {}
