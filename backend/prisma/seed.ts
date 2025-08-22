@@ -1,5 +1,4 @@
-// prisma/seed.ts
-import { PrismaClient } from '../generated/prisma'
+import { PrismaClient } from '@prisma/client';
 
 import bcrypt from "bcrypt";
 
@@ -15,7 +14,7 @@ async function main() {
     create: {
       email: "test@example.com",
       password: hashedPassword,
-      name: "Test User",
+      username: "Test User",
     },
   });
 
@@ -25,7 +24,7 @@ async function main() {
       name: "Drink Water",
       description: "Drink 8 glasses of water daily",
       frequency: "DAILY",
-      goal: 8,
+  
       userId: user.id,
     },
   });
@@ -35,12 +34,12 @@ async function main() {
       name: "Exercise",
       description: "Workout for 30 mins",
       frequency: "DAILY",
-      goal: 1,
+
       userId: user.id,
     },
   });
 
-  // Add tracking data
+
   await prisma.habitTrack.createMany({
     data: [
       { habitId: habit1.id, date: new Date("2025-08-15") },
@@ -49,14 +48,7 @@ async function main() {
     ],
   });
 
-  // Add reminders
-  await prisma.reminder.create({
-    data: { habitId: habit1.id, time: "08:00" },
-  });
 
-  await prisma.reminder.create({
-    data: { habitId: habit2.id, time: "18:00" },
-  });
 
   console.log("Database seeded successfully!");
 }
