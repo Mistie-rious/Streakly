@@ -92,13 +92,9 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({ isOpen, onClose, o
     </select>
 
     <DialogFooter className="mt-4 flex gap-2">
-    <Button type="submit" disabled={!name.trim() || isSubmitting}>
+      <Button type="submit" disabled={!name.trim() || isSubmitting}>
   {isSubmitting ? "Adding..." : "Add Habit"}
 </Button>
-
-      <Button type="submit" disabled={!name.trim()}>
-        Add Habit
-      </Button>
     </DialogFooter>
   </form>
 </DialogContent>
