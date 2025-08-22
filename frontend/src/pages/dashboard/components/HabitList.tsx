@@ -1,5 +1,4 @@
 import type { HabitUI } from "@/store/slices/habitsSlice";
-import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { HabitCard } from "./HabitCard";
@@ -38,9 +37,8 @@ export function HabitList({ habits, frequencyFilter, setFrequencyFilter, handleT
 
       {filtered.length === 0 ? (
         <div className="bg-white rounded-lg p-8 text-center shadow-sm border border-gray-200">
-          <h3 className="text-lg font-medium text-gray-900 mb-2">No habits yet</h3>
-          <p className="text-gray-600 mb-4">Add your first habit to get started</p>
-          <Button className="px-4 py-2 rounded-lg">Add Habit</Button>
+          <h3 className=" font-medium text-gray-900 mb-2">No habits yet.</h3>
+         
         </div>
       ) : (
         <ScrollArea className="h-[400px] w-full rounded-md border p-2">
