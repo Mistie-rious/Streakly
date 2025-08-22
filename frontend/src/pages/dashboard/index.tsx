@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState, AppDispatch } from "@/store";
 import { fetchHabits, toggleHabit, toggleToday } from "@/store/slices/habitsSlice";
-import { LoadingDashboard } from "./components/LoadingDashboard";
+import { DashboardSkeleton } from "./components/DashboardSkeleton";
 import { DashboardHeader } from "./components/DashboardHeader";
 import { DashboardStats } from "./components/DashboardStats";
 import { HabitList } from "./components/HabitList";
@@ -48,7 +48,7 @@ export default function Dashboard() {
   }
   
 
-  if (loading) return <LoadingDashboard />;
+  if (loading) return <DashboardSkeleton />;
   if (error) return <div className="text-center py-12 text-red-500">Error: {error}</div>;
 
   const completedCount = habits.filter(h => h.completedToday).length;
