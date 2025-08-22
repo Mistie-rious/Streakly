@@ -157,15 +157,16 @@ export const habitsSlice = createSlice({
 
 
       // createHabit
-      .addCase(createHabit.pending, (state) => { state.loading = true; state.error = null; })
+      .addCase(createHabit.pending, (state) => {
+        state.error = null; 
+      })
       .addCase(createHabit.fulfilled, (state, action) => {
-        state.loading = false;
-        state.habits.push(action.payload);
+        state.habits.push(action.payload); 
       })
       .addCase(createHabit.rejected, (state, action) => {
-        state.loading = false;
         state.error = action.payload as string;
       })
+      
 
       // updateHabit
       .addCase(updateHabit.pending, (state) => { state.loading = true; state.error = null; })
